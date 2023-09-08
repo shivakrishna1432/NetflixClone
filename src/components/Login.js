@@ -13,23 +13,37 @@ const Login = () => {
         />
       </div>
       <form className="w-3/12 bg-black p-12 my-40 mx-auto right-0 left-0 absolute bg-opacity-80 text-white rounded-lg">
-        <h1 className="font-semibold text-3xl my-4">Sign In</h1>
+        <h1 className="font-semibold text-3xl my-4">
+          {isSignIn ? "Sign In" : "Sign Up"}
+        </h1>
+        {!isSignIn && (
+          <input
+            type="text"
+            placeholder="Name"
+            className="w-full my-2 px-4 py-2 bg-neutral-800 rounded-md"
+          />
+        )}
         <input
           type="text"
           placeholder="Email address"
-          className="w-full my-2 px-4 py-2 bg-gray-600 rounded-md"
+          className="w-full my-2 px-4 py-2 bg-neutral-800 rounded-md"
         />
         <input
           type="password"
           placeholder="Password"
-          className="w-full my-2 px-4 py-2 bg-gray-600 rounded-md"
+          className="w-full my-2 px-4 py-2 bg-neutral-800 rounded-md"
         />
-        <button className="bg-red-700 w-full my-6 px-4 py-2 rounded-md">
+        <button className="bg-red-800 w-full my-6 px-4 py-2 rounded-md">
           Submit
         </button>
         <p>
-          New to Netflix?{" "}
-          <span className="hover text-red-800">Sign up Now</span>
+          {isSignIn ? "New to Netflix?" : "Already a Member?"}
+          <span
+            className="hover text-red-600 cursor-pointer"
+            onClick={() => setIsSignIn(!isSignIn)}
+          >
+            {isSignIn ? " Sign up Now" : " Sign In Now"}
+          </span>
         </p>
       </form>
     </div>
