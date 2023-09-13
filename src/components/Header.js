@@ -3,6 +3,7 @@ import React from "react";
 import { auth } from "../utils/firebase";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { imageUrl } from "../utils/constants";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const Header = () => {
         navigate("/error");
       });
   };
+
   return (
     <div className="w-screen absolute bg-gradient-to-b from-black z-10 px-8 py-2 flex justify-between items-center">
       <img
@@ -27,7 +29,7 @@ const Header = () => {
         <div className="flex">
           <img
             className=" w-8 h-8 mx-2 rounded-full cursor-pointer"
-            src="https://tse3.mm.bing.net/th?id=OIP.HHVUf3TYqncgpJXyCMmxyAHaHa&pid=Api&P=0&h=180"
+            src={imageUrl()}
             alt="UserIcon"
           />
           <button
