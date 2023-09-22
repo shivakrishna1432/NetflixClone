@@ -13,3 +13,6 @@
 - Provided appStore to App.
 - Implemented Sign Out
 - Update ProfileName and PhotURL
+- Bug Fixed : if the user is not logged in, "/browse" will redirected to "/" and vice-versa
+- unSubscribe to the onAuthStateChanged callback
+- Placed hardcoded values in the constants file
