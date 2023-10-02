@@ -16,3 +16,9 @@
 - Bug Fixed : if the user is not logged in, "/browse" will redirected to "/" and vice-versa
 - unSubscribe to the onAuthStateChanged callback
 - Placed hardcoded values in the constants file
+- Register TMDB API & create app and get access token
+- get data from Now playing movies list API
+- create moviesSlice & push movies data to the store (moviesSlice)
+- get trailerVideo from TMDB videos API
+- update addTrailer reducer in the movieSlice
+- add react-icons to the buttons
