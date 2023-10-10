@@ -8,6 +8,7 @@ const useTrailerVideo = (videoId) => {
 
   useEffect(() => {
     getTrailerMovie();
+    // eslint-disable-next-line
   }, []);
 
   const getTrailerMovie = async () => {

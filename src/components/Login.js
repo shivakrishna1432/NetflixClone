@@ -10,16 +10,26 @@ import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { BG_LOGO, imageUrl } from "../utils/constants";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+
   const name = useRef();
   const email = useRef();
   const password = useRef();
+
   const handleClick = () => {
-    const message = isValidate(email.current.value, password.current.value);
+    const message = isValidate(
+      email.current.value,
+      password.current.value,
+      name.current.value
+    );
     setErrorMessage(message);
+    if (message) return;
+
     if (!isSignIn) {
       //Sign Up Page
       createUserWithEmailAndPassword(
@@ -44,18 +54,17 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
+              navigate("/browse");
             })
             .catch((error) => {
               // An error occurred
-              // ...
+              setErrorMessage(error.message);
             });
-
-          // ...
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(`${errorCode} - ${errorMessage}`);
+          // const errorCode = error.code;
+          // const errorMessage = error.message;
+          setErrorMessage("Email Already used");
         });
     } else {
       //Sign In Page
@@ -66,12 +75,13 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed in
-          const user = userCredential.user;
+          // const user = userCredential.user;
+          navigate("/browse");
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(`${errorCode} - ${errorMessage}`);
+          // const errorCode = error.code;
+          // const errorMessage = error.message;
+          setErrorMessage("Invalid user");
         });
     }
   };
