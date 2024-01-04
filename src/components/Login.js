@@ -21,11 +21,16 @@ const Login = () => {
   const email = useRef();
   const password = useRef();
 
+  const toggleSignIn = () => {
+    setIsSignIn(!isSignIn);
+    setErrorMessage(null);
+  };
+
   const handleClick = () => {
     const message = isValidate(
       email.current.value,
       password.current.value,
-      name.current.value
+      name?.current?.value
     );
     setErrorMessage(message);
     if (message) return;
@@ -41,7 +46,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: name.current.value,
+            displayName: name?.current?.value,
             photoURL: imageUrl(),
           })
             .then(() => {
@@ -88,8 +93,12 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="absolute">
-        <img src={BG_LOGO} alt="netflix_image" />
+      <div>
+        <img
+          src={BG_LOGO}
+          alt="netflix_image"
+          className="absolute object-cover w-full h-full"
+        />
       </div>
       <form
         className="w-1/4 bg-black p-12 my-40 mx-auto right-0 left-0 absolute bg-opacity-80 text-white rounded-lg"
@@ -121,7 +130,7 @@ const Login = () => {
         <p className="text-red-600 font-semibold text-sm">{errorMessage}</p>
         <button
           className="bg-red-800 w-full my-6 px-4 py-2 rounded-md"
-          onClick={() => handleClick()}
+          onClick={handleClick}
         >
           {isSignIn ? "Sign In" : "Sign Up"}
         </button>
@@ -129,7 +138,7 @@ const Login = () => {
           {isSignIn ? "New to Netflix?" : "Already a Member?"}
           <span
             className="hover text-red-600 cursor-pointer"
-            onClick={() => setIsSignIn(!isSignIn)}
+            onClick={toggleSignIn}
           >
             {isSignIn ? " Sign up Now" : " Sign In Now"}
           </span>
