@@ -3,11 +3,40 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Browse from "./components/Browse";
+import MovieInfo from "./components/MovieInfo";
+import Login from "./components/Login";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <Login />,
+  },
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "browse",
+        element: <Browse />,
+      },
+      {
+        path: "/:movieId",
+        element: <MovieInfo />,
+      },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={appStore}>
+      <RouterProvider router={appRouter} />
+    </Provider>
   </React.StrictMode>
 );
 

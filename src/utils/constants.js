@@ -41,3 +41,4 @@ export function imageUrl() {
 }
 
 export const IMG_CDN = "https://image.tmdb.org/t/p/w500/";
+export const API_KEY = "70551947008d4d1fc367caa7df87a27a";
