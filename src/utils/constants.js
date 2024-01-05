@@ -39,3 +39,5 @@ const IMG_ARRAY = [
 export function imageUrl() {
   return IMG_ARRAY[Math.floor(Math.random() * IMG_ARRAY.length)];
 }
+
+export const IMG_CDN = "https://image.tmdb.org/t/p/w500/";

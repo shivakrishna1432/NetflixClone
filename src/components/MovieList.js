@@ -1,11 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import MovieCard from "./MovieCard";
 
-const MovieList = () => {
-  const movie = useSelector((store) => store.movie?.nowPlayingMovies);
+const MovieList = ({ title, movies }) => {
+  if (!movies) return;
   return (
-    <div>
-      <h1>Hi</h1>
+    <div className="">
+      <h1 className="text-white font-bold text-3xl">{title}</h1>
+      <div className="flex overflow-x-scroll no-scrollbar">
+        <div className="flex">
+          {movies?.map((movie) => (
+            <MovieCard posterPath={movie?.poster_path} key={movie.id} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

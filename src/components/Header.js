@@ -10,13 +10,6 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
-  const handleSignOut = () => {
-    signOut(auth)
-      .then(() => {})
-      .catch((error) => {
-        navigate("/error");
-      });
-  };
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
@@ -30,7 +23,7 @@ const Header = () => {
             photoURL: photoURL,
           })
         );
-        // navigate("/browse");
+        navigate("/browse");
       } else {
         dispatch(removeUser());
         navigate("/");
@@ -39,6 +32,14 @@ const Header = () => {
     return () => unSubscribe();
     //eslint-disable-next-line
   }, []);
+
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {})
+      .catch((error) => {
+        navigate("/error");
+      });
+  };
 
   return (
     <div className="w-full absolute z-10 px-8 py-2 flex justify-between items-center bg-gradient-to-b from-black">
