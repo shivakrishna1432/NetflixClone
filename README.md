@@ -22,3 +22,12 @@
 - get trailerVideo from TMDB videos API
 - update addTrailer reducer in the movieSlice
 - add react-icons to the buttons
+- Built secondaryContainer
+- Build MovieList & MovieCards
+- added Styling for scrolling feature (Removed Horizontal scrollbar)
+- TMDB Image CDN URL
+- CustomHooks created for popularMovies,TopRatedMovies,UpcomingMovies data.
+- MovieInfo page created when we click on MovieCard.
+- gptSearch page created when we click on gptSearch button.
+- created env file and store API keys.
+- add env in git ignore file

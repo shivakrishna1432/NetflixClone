@@ -21,7 +21,7 @@ const Movie = ({ movies, crew, cast }) => {
           alt={original_title}
           className="w-[250px] rounded-lg"
         />
-        <div className="flex flex-col px-4">
+        <div className="flex flex-col px-4 mt-6">
           <h1 className="font-semibold text-3xl">
             {original_title}(⭐{vote_average?.toFixed(1)})
           </h1>

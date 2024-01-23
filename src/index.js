@@ -9,6 +9,7 @@ import MovieInfo from "./components/MovieInfo";
 import Login from "./components/Login";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import GptSearch from "./components/GptSearch";
 
 const appRouter = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/:movieId",
         element: <MovieInfo />,
+      },
+      {
+        path: "/gptsearch",
+        element: <GptSearch />,
       },
     ],
   },

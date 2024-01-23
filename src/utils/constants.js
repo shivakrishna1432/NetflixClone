@@ -2,8 +2,7 @@ export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MDU1MTk0NzAwOGQ0ZDFmYzM2N2NhYTdkZjg3YTI3YSIsInN1YiI6IjY0ZGE0YWQxZDEwMGI2MDBjNWQyYTA2ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.1vs4nZNPPUsp_5R0Vtm2BWxMw0YPp6M4ipt9lkDAQ-c",
+    Authorization: "Bearer " + process.env.REACT_APP_TMDB_KEY,
   },
 };
 
@@ -41,4 +40,5 @@ export function imageUrl() {
 }
 
 export const IMG_CDN = "https://image.tmdb.org/t/p/w500/";
-export const API_KEY = "70551947008d4d1fc367caa7df87a27a";
+export const MovieIcon =
+  "https://raw.githubusercontent.com/Jasdev2910/Netflix-GPT/main/src/assets/cinema-icon.png";

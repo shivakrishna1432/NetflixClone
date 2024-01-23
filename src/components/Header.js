@@ -5,11 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { NETFLIX_LOGO, imageUrl } from "../utils/constants";
 import { addUser, removeUser } from "../utils/userSlice";
+import { toggleGptSearch } from "../utils/gptSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const gptSearch = useSelector((store) => store.gpt.gptSearch);
+  const handleToggleGpt = () => {
+    dispatch(toggleGptSearch());
+  };
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
@@ -48,6 +53,13 @@ const Header = () => {
       </Link>
       {user && (
         <div className="flex">
+          <button
+            className="bg-green-500 text-white h-8 rounded-md px-4 font-bold mx-2"
+            onClick={handleToggleGpt}
+          >
+            {gptSearch ? "Home" : "GPT Search"}
+          </button>
+
           <img
             className=" w-8 h-8 mx-2 rounded-full cursor-pointer"
             src={imageUrl()}

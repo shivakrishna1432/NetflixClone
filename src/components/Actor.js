@@ -6,7 +6,7 @@ const Actor = ({ cast }) => {
   const { profile_path, name, character } = cast;
   return (
     <>
-      <div className="flex bg-gray-200 m-4 w-[300px] rounded-lg">
+      <div className="flex bg-neutral-500 m-4 w-[300px] rounded-lg">
         <img
           src={profile_path ? IMG_CDN + profile_path : logo}
           alt={name}
